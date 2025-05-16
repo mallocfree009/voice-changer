@@ -1,0 +1,27 @@
+# fairseq
+git+https://github.com/mallocfree009/fairseq.git@dev_mf1
+
+uvicorn
+pyOpenSSL
+numpy
+resampy
+python-socketio
+fastapi
+python-multipart
+onnxruntime-gpu
+scipy
+matplotlib
+websockets
+faiss-cpu
+torchcrepe
+librosa
+gin
+gin_config
+einops
+local_attention
+websockets
+sounddevice
+dataclasses_json
+onnxsim
+torchfcpe
+pyworld
