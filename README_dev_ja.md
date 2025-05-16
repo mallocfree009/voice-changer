@@ -20,15 +20,39 @@ $ conda activate vcclient-dev
 
 ```
 $ git clone https://github.com/w-okada/voice-changer.git
+$ cd voice-changer
 ```
 
 ## サーバ開発者向け
 
 1. モジュールをインストールする
 
+NVIDIAのGPUを利用する場合: 
+
+server/requirements_nvidia2.txtをCUDAのバージョンに応じて適宜書き換えてください。
+この例の場合はCUDA12.8の環境向けです。
+
 ```
-$ cd voice-changer/server
-$ pip install -r requirements.txt
+--index-url https://download.pytorch.org/whl/cu128
+```
+
+次に以下を実行します
+
+```
+$ python -m pip install -r server/requirements_nvidia1.txt
+$ python -m pip install -r server/requirements_nvidia2.txt
+```
+
+GPUなしの場合:
+
+```
+$ python -m pip install -r server/requirements_cpu.txt
+```
+
+共通のモジュールをインストール
+
+```
+$ python -m pip install -r server/requirements.txt
 ```
 
 2. サーバを起動する
@@ -36,6 +60,7 @@ $ pip install -r requirements.txt
 次のコマンドで起動します。各種重みについてのパスは環境に合わせて変えてください。
 
 ```
+$ cd server
 $ python3 MMVCServerSIO.py -p 18888 --https true \
     --content_vec_500 pretrain/checkpoint_best_legacy_500.pt  \
     --content_vec_500_onnx pretrain/content_vec_500.onnx \

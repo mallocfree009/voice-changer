@@ -20,15 +20,39 @@ $ conda activate vcclient-dev
 
 ```
 $ git clone https://github.com/w-okada/voice-changer.git
+$ cd voice-changer
 ```
 
 ## For Server Developer
 
 1. Install requirements
 
+For NVIDIA GPUs:
+
+Please rewrite `server/requirements_nvidia2.txt` appropriately according to your CUDA version. 
+This example is for a CUDA 12.8 environment.
+
 ```
-$ cd voice-changer/server
-$ pip install -r requirements.txt
+--index-url https://download.pytorch.org/whl/cu128
+```
+
+Next, execute the following:
+
+```
+$ python -m pip install -r server/requirements_nvidia1.txt
+$ python -m pip install -r server/requirements_nvidia2.txt
+```
+
+For No GPU:
+
+```
+$ python -m pip install -r server/requirements_cpu.txt
+```
+
+Then install common modules.
+
+```
+$ python -m pip install -r server/requirements.txt
 ```
 
 2. Run server
@@ -36,6 +60,7 @@ $ pip install -r requirements.txt
 Run server with the below command. You can replace the path to each weight.
 
 ```
+$ cd server
 $ python3 MMVCServerSIO.py -p 18888 --https true \
     --content_vec_500 pretrain/checkpoint_best_legacy_500.pt  \
     --content_vec_500_onnx pretrain/content_vec_500.onnx \
