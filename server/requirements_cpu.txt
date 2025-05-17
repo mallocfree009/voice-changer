@@ -1,4 +1,0 @@
-# For CPU-only environment
-torch
-torchvision
-torchaudio
