@@ -1,7 +1,6 @@
 # Please set the URL according to your CUDA version environment. 
 # The one listed here is for CUDA 12.8.
 --index-url https://download.pytorch.org/whl/cu128
-torch
-torchvision
-torchaudio
 
+torch
+torchaudio
