@@ -27,32 +27,28 @@ $ cd voice-changer
 
 1. Install requirements
 
-For NVIDIA GPUs:
-
-Please rewrite `server/requirements_nvidia2.txt` appropriately according to your CUDA version. 
-This example is for a CUDA 12.8 environment.
+1-1. For No GPU
 
 ```
---index-url https://download.pytorch.org/whl/cu128
+$ python -m pip install -r server/requirements_cpuonly.txt
+```
+
+1-2. For NVIDIA GPUs
+
+Please rewrite the `cu128` part in `server/requirements_nvidia.txt` according to your CUDA version.
+The default `cu128` is for CUDA 12.8.
+
+```
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+torch==2.7.0+cu128
+torchaudio==2.7.0+cu128
 ```
 
 Next, execute the following:
 
 ```
-$ python -m pip install -r server/requirements_nvidia1.txt
-$ python -m pip install -r server/requirements_nvidia2.txt
-```
-
-For No GPU:
-
-```
-$ python -m pip install -r server/requirements_cpu.txt
-```
-
-Then install common modules.
-
-```
-$ python -m pip install -r server/requirements.txt
+$ python -m pip install -r server/requirements_nvidia.txt
 ```
 
 2. Run server

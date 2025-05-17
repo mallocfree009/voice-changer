@@ -26,34 +26,29 @@ $ git clone https://github.com/w-okada/voice-changer.git
 
 1. 모듈을 설치한다
 
-NVIDIA GPU를 사용하는 경우:
-
-`server/requirements_nvidia2.txt` 파일을 CUDA 버전에 맞게 적절히 수정하십시오.
-이 예시는 CUDA 12.8 환경을 위한 것입니다.
+1-1. GPU가 없는 경우
 
 ```
---index-url https://download.pytorch.org/whl/cu128
+$ python -m pip install -r server/requirements_cpuonly.txt
 ```
 
-다음 명령을 실행하십시오:
+1-2. NVIDIA GPU를 사용하는 경우
+
+`server/requirements_nvidia.txt` 파일에서 CUDA 버전에 따라 아래 `cu128` 부분을 적절히 수정하십시오.
+기본 `cu128`은 CUDA 12.8용입니다.
 
 ```
-$ python -m pip install -r server/requirements_nvidia1.txt
-$ python -m pip install -r server/requirements_nvidia2.txt
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+torch==2.7.0+cu128
+torchaudio==2.7.0+cu128
 ```
 
-GPU를 사용하지 않는 경우:
+다음을 실행하십시오:
 
 ```
-$ python -m pip install -r server/requirements_cpu.txt
+$ python -m pip install -r server/requirements_nvidia.txt
 ```
-
-그 다음 공통 모듈을 설치하십시오:
-
-```
-$ python -m pip install -r server/requirements.txt
-```
-
 
 2. 서버를 구동한다
 

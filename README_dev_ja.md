@@ -27,32 +27,28 @@ $ cd voice-changer
 
 1. モジュールをインストールする
 
-NVIDIAのGPUを利用する場合: 
-
-server/requirements_nvidia2.txtをCUDAのバージョンに応じて適宜書き換えてください。
-この例の場合はCUDA12.8の環境向けです。
+1-1. GPUなしの場合
 
 ```
---index-url https://download.pytorch.org/whl/cu128
+$ python -m pip install -r server/requirements_cpuonly.txt
+```
+
+1-2. NVIDIAのGPUを利用する場合
+
+server/requirements_nvidia.txtをCUDAのバージョンに応じて以下のcu128の部分を適宜書き換えてください。
+デフォルトのcu128場合はCUDA12.8向けです。
+
+```
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+torch==2.7.0+cu128
+torchaudio==2.7.0+cu128
 ```
 
 次に以下を実行します
 
 ```
-$ python -m pip install -r server/requirements_nvidia1.txt
-$ python -m pip install -r server/requirements_nvidia2.txt
-```
-
-GPUなしの場合:
-
-```
-$ python -m pip install -r server/requirements_cpu.txt
-```
-
-共通のモジュールをインストール
-
-```
-$ python -m pip install -r server/requirements.txt
+$ python -m pip install -r server/requirements_nvidia.txt
 ```
 
 2. サーバを起動する
